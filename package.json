@@ -1,6 +1,6 @@
 {
   "name": "lariclient",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "JavaScript client for lari",
   "main": "index.js",
   "scripts": {
