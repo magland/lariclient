@@ -42,7 +42,7 @@ function LariClientImpl() {
 }
 
 function http_post_json(url, data, callback) {
-  axios.post(url,data,{
+  axios(url,data,{
     responseType: 'json'
   })
     .then(function(response) {
