@@ -8,30 +8,36 @@ function LariClientImpl() {
   };
   this.runProcess = function(node_id, processor_name, inputs, outputs, parameters, opts, callback) {
     let url = m_lari_hub_url + '/' + node_id + '/api/run_process';
+    let passcode = opts.passcode || '';
+    if ('passcode' in opts)
+      delete opts['passcode'];
     let data = {
       processor_name: processor_name,
       inputs: inputs,
       outputs: outputs,
       parameters: parameters,
-      opts: opts
+      opts: opts,
+      passcode: passcode
     };
     http_post_json(url, data, function(err, resp) {
       callback(err, resp);
     });
   };
-  this.probeProcess = function(node_id, job_id, callback) {
+  this.probeProcess = function(node_id, job_id, opts, callback) {
     let url = m_lari_hub_url + '/' + node_id + '/api/probe_process';
     let data = {
-      job_id: job_id
+      job_id: job_id,
+      passcode: opts.passcode || ''
     };
     http_post_json(url, data, function(err, resp) {
       callback(err, resp);
     });
   };
-  this.cancelProcess = function(node_id, job_id, callback) {
+  this.cancelProcess = function(node_id, job_id, opts, callback) {
     let url = m_lari_hub_url + '/' + node_id + '/api/cancel_process';
     let data = {
-      job_id: job_id
+      job_id: job_id,
+      passcode: opts.passcode || ''
     };
     http_post_json(url, data, function(err, resp) {
       callback(err, resp);
@@ -42,9 +48,9 @@ function LariClientImpl() {
 }
 
 function http_post_json(url, data, callback) {
-  axios.post(url,data,{
-    responseType: 'json'
-  })
+  axios.post(url, data, {
+      responseType: 'json'
+    })
     .then(function(response) {
       setTimeout(function() { // so we don't catch an error from the timeout
         callback(null, response.data);
