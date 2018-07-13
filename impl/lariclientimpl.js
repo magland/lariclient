@@ -8,16 +8,12 @@ function LariClientImpl() {
   };
   this.runProcess = function(node_id, processor_name, inputs, outputs, parameters, opts, callback) {
     let url = m_lari_hub_url + '/' + node_id + '/api/run_process';
-    let passcode = opts.passcode || '';
-    if ('passcode' in opts)
-      delete opts['passcode'];
     let data = {
       processor_name: processor_name,
       inputs: inputs,
       outputs: outputs,
       parameters: parameters,
-      opts: opts,
-      passcode: passcode
+      opts: opts
     };
     http_post_json(url, data, function(err, resp) {
       callback(err, resp);
@@ -27,7 +23,7 @@ function LariClientImpl() {
     let url = m_lari_hub_url + '/' + node_id + '/api/probe_process';
     let data = {
       job_id: job_id,
-      passcode: opts.passcode || ''
+      opts: opts
     };
     http_post_json(url, data, function(err, resp) {
       callback(err, resp);
@@ -37,7 +33,7 @@ function LariClientImpl() {
     let url = m_lari_hub_url + '/' + node_id + '/api/cancel_process';
     let data = {
       job_id: job_id,
-      passcode: opts.passcode || ''
+      opts:opts
     };
     http_post_json(url, data, function(err, resp) {
       callback(err, resp);
