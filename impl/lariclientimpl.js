@@ -39,6 +39,16 @@ function LariClientImpl() {
       callback(err, resp);
     });
   };
+  this.getProcessorSpec = function(node_id, processor_name, opts, callback) {
+    let url = m_lari_hub_url + '/' + node_id + '/api/processor_spec';
+    let data = {
+      processor_name: processor_name,
+      opts:opts
+    };
+    http_post_json(url, data, function(err, resp) {
+      callback(err, resp.spec||null);
+    });
+  };
 
   let m_lari_hub_url = process.env.LARI_HUB_URL || 'https://larihub.org';
 }
@@ -53,7 +63,8 @@ function http_post_json(url, data, callback) {
       }, 0);
     })
     .catch(function(error) {
-      console.error(error.response.data);
+      if (error.response)
+        console.error(error.response.data);
       callback(error.message);
     });
 }

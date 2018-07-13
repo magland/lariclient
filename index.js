@@ -34,4 +34,13 @@ function LariClient() {
       });
     });
   };
+  this.getProcessorSpec = function(node_id, processor_name, opts) {
+    opts=opts||{};
+    return new Promise(function(resolve, reject) {
+      impl.getProcessorSpec(node_id, processor_name, opts, function(err, resp) {
+        if (err) return reject(err);
+        resolve(resp);
+      });
+    });
+  };
 }
