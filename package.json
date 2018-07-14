@@ -4,7 +4,7 @@
   "description": "JavaScript client for lari",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test/test.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,8 @@
   "dependencies": {
     "async": "^2.6.1",
     "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "@magland/kbucket": "^0.7.0"
   }
 }

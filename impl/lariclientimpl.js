@@ -46,7 +46,11 @@ function LariClientImpl() {
       opts:opts
     };
     http_post_json(url, data, function(err, resp) {
-      callback(err, resp.spec||null);
+      if (err) {
+        callback(err);
+        return;
+      }
+      callback(null, resp.spec||null);
     });
   };
 
