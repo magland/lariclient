@@ -84,6 +84,15 @@ LariClient.test = function() {
       })
       .then(function(resp) {
         console.info(resp);
+        if (!resp.is_complete) {
+          console.error('Processor job did not complete.');
+          process.exit(-1);
+        }
+        if (!resp.result.success) {
+          console.error('Error in processor job: '+resp.result.error);
+          process.exit(-1);  
+        }
+        console.info(`Job ${processor_name} completed successfully.`);
         kbucket.stop_test_nodes();
       })
       .catch(function(err) {
