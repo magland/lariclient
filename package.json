@@ -26,6 +26,6 @@
     "axios": "^0.18.0"
   },
   "devDependencies": {
-    "@magland/kbucket": "0.7.3"
+    "@magland/kbucket": "^0.7.3"
   }
 }
