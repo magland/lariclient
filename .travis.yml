@@ -5,4 +5,11 @@ node_js:
 - node
 install:
 - npm install
-
+deploy:
+  provider: npm
+  email: jmagland@flatironinstitute.org
+  api_key:
+    secure: Qwr8ui2O5rGKG4xKvJ04uCq7h6As+1Uc466sbpLjUKU/bmGzTjCtWS1TeABte+X/7wrdBB0gg5vGCPi4fmqAMQ/RkICtnZYmy5EvusBr0XPZkKfT3FgEGq234xuiY3j1B59SZmMBZu0Z+uyuXEXLG2etQCCQENHwzyOkITmVzS2Btd5BbQm9DT9UwVwF2bFyYVWRmhb1i+2UwRooIkFa/0kUxau9SjTQYK9ACdOMWjwLXiaXufg5q3DPF8yCtkHCB8dGNMIq+dJAz+AG57+EEHqsGtOqIXoQ+HvzY7Tru0u32aUqAgdNKhI/veQttSQX6gX59TSp/b6Q3ghxHv4jlEOt0ZiEZoR8KKGzRxQj1GzU6L/XgWU2Zc7N1NB0N0ZM2YeFawSTCJ685htHPhTRefe3tW9Jf3m62fsHIi+5M+hQT8YJ2viUmg1nu7jPIFiphtLp4jl9LQKuiJcvr9VEHg05G8kis0hYuZ3Ut2Wh1D+0YbLjSLmnP3OlAu1j6heQ76LxfxbEadp8YcI4Hx5e0WAZo4Z3snhsHP0MGxbT1yMElF0civ2A4Wmq/kN9EkMFf4W6QpEc1gzs/qf0TnWTX2hvdzNTtlJ5gDBmChpziLVb/9vEssZzjujC+qYFcpvf3hoOXT1xARtdNenhVtevtHkMe+Iun3HADF87AVNVTyw=
+  on:
+    tags: true
+    repo: magland/lariclient
