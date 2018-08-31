@@ -47,8 +47,18 @@ function LariClient() {
       });
     });
   };
+  this.getNodeInfo = function(node_id) {
+    opts = opts || {};
+    return new Promise(function(resolve, reject) {
+      impl.getNodeInfo(node_id, function(err, resp) {
+        if (err) return reject(err);
+        resolve(resp);
+      });
+    });
+  };
 }
 
+/*
 LariClient.test = function() {
   const kbucket = require('@magland/kbucket'); // only for test
   kbucket.start_test_nodes(function() {
@@ -102,3 +112,4 @@ LariClient.test = function() {
   });
 
 };
+*/

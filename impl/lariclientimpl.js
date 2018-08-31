@@ -53,6 +53,20 @@ function LariClientImpl() {
       callback(null, resp.spec||null);
     });
   };
+  this.getNodeInfo=function(lari_node_id, callback) {
+    var url0 = `${m_lari_hub_url}/${lari_node_id}/api/nodeinfo`;
+    http_get_json(url0, function(err, resp) {
+      if (err) {
+        callback(err);
+        return;
+      }
+      if (!resp.info) {
+        callback(new Error('No info field in response to nodeinfo.'));
+        return;
+      }
+      callback(null, resp.info);
+    });
+  };
 
   let m_lari_hub_url = process.env.LARI_HUB_URL || 'https://larihub.org';
 }

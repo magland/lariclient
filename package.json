@@ -3,9 +3,7 @@
   "version": "1.5.6",
   "description": "JavaScript client for lari",
   "main": "index.js",
-  "scripts": {
-    "test": "test/test.js"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/magland/lariclient.git"
@@ -25,7 +23,5 @@
     "async": "^2.6.1",
     "axios": "^0.18.0"
   },
-  "devDependencies": {
-    "@magland/kbucket": "latest"
-  }
+  "devDependencies": {}
 }
