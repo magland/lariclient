@@ -86,3 +86,17 @@ function http_post_json(url, data, callback) {
       callback(error.message);
     });
 }
+
+function http_get_json(url, callback) {
+  axios.get(url, {
+      responseType: 'json'
+    })
+    .then(function(response) {
+      setTimeout(function() { // so we don't catch an error from the timeout
+        callback(null, response.data);
+      }, 0);
+    })
+    .catch(function(error) {
+      callback(error);
+    });
+}

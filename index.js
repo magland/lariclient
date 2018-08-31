@@ -48,7 +48,6 @@ function LariClient() {
     });
   };
   this.getNodeInfo = function(node_id) {
-    opts = opts || {};
     return new Promise(function(resolve, reject) {
       impl.getNodeInfo(node_id, function(err, resp) {
         if (err) return reject(err);
